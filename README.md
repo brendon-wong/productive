@@ -17,6 +17,7 @@ Productive.gq is a web application with the purpose of helping users overcome pr
 ## Future releases
 
 - In the future, the service will also support a pomodoro like system similar to Vitamin-R in which the user can enter a task and a timeblock, and alerts will occur throughout the time block to ensure the user remains on track. After timeblocks are completed, users will be able to extend their current timeblock or take a break.
+- Clicking audio button transitions between tone and spoken english notifications?
 
 ## Style guide
 

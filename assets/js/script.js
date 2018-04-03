@@ -1,3 +1,7 @@
+// 
+$(document).ready(function() {
+
+
 // Notification settings
 var visual = true;
 var audio = true;
@@ -7,7 +11,7 @@ var disruptive = true;
 // var alert_interval = 2;
 var alert_interval;
 // Start with low productivity to activate alert interval faster if no response
-var current_productivity = 0.2;
+var current_productivity = 0.9;
 
 //var next_alert = new Date();
 //next_alert.setMinutes(now.getMinutes() + 30);
@@ -15,6 +19,27 @@ var current_productivity = 0.2;
 function manager() {
   alert_interval = calculate_alert_interval(current_productivity);
   set_next_alert(alert_interval);
+  time_until_alert(alert_interval);
+}
+
+function time_until_alert(alert_interval) {
+  var next_alert = new Date();
+  next_alert.setSeconds(next_alert.getSeconds() + (alert_interval * 60));
+  var interval = setInterval(function() {
+      var now = new Date().getTime();
+      var time_difference = (next_alert - now);
+      var minutes = Math.floor((time_difference/1000/60) % 60);
+      var seconds = Math.floor((time_difference/1000) % 60 );
+      if (seconds < 10) {seconds = "0" + seconds};
+      //if (time_difference < 0) {minutes = 0; seconds = 00};
+      //$(#time_until_alert).text(minutes + ":" + seconds) // display time on homepage
+      $("#time_until_alert").text(minutes + ":" + seconds)
+      //var remaining_time = document.getElementById("time_until_alert");
+      //remaining_time.innerHTML = 
+      //document.getElementById('time_until_alert').innerHTML(time_difference);
+      if (time_difference <=100) {clearInterval(interval)};
+  }, 100)
+  //"+hour_12+":"+mins+":"+secs"
 }
 
 function trigger_alert() {
@@ -42,8 +67,30 @@ function set_next_alert(minutes) {
 }
 
 function calculate_alert_interval(current_productivity) {
-  // Process current_productivity into number of minutes here
-  let interval = 0.1;
+  // Turn current_productivity into minutes
+  let interval;
+  if (current_productivity == 1 || current_productivity == 2) {
+    interval = 2;
+  }
+  else if (current_productivity == 3) {
+    interval = 5;
+  }
+  else if (current_productivity == 4) {
+    interval = 10;
+  }
+  else if (current_productivity == 5) {
+    interval = 15;
+  }
+  else if (current_productivity == 6) {
+    interval = 20;
+  }
+  else if (current_productivity == 7) {
+    interval = 30;
+  }
+  else {
+    // For testing, switch to more reasonable number later
+    interval = 0.25;
+  }
   return interval;
 }
 
@@ -112,3 +159,6 @@ Push.create("Please check in with Productive.gq")
 var a=new Audio('https://soundbible.com/grab.php?id=2156&type=mp3'); a.play();
 setTimeout(function(){Push.create("Please check in with Productive.gq")}, 5000);
 */
+
+// End with closing
+});
