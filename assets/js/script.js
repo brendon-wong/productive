@@ -33,7 +33,7 @@ function trigger_alert() {
 // Moved to separate function to allow audio alerts and push notifications to
 // continue to sound even if the alert is not dismissed by the user
 function disruptive_alert() {
-  setTimeout(function(){window.alert("Please update Productive.gq")}, 500);
+  setTimeout(function(){window.alert("Please update Productive.gq")}, 5000);
 }
 
 function set_next_alert(minutes) {
