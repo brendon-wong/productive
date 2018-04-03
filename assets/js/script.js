@@ -11,5 +11,5 @@
 // Desktop Notifications
 //Push.create("Please check in with Productive.gq")
 // Play Audio
-var a=new Audio('http://soundbible.com/grab.php?id=2156&type=mp3'); a.play();
+var a=new Audio('https://soundbible.com/grab.php?id=2156&type=mp3'); a.play();
 //setTimeout(function(){Push.create("Please check in with Productive.gq")}, 5000);
