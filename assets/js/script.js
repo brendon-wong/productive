@@ -7,7 +7,7 @@ var disruptive = true;
 // var alert_interval = 2;
 var alert_interval;
 // Start with low productivity to activate alert interval faster if no response
-var current_productivity = 1;
+var current_productivity = 0.15;
 
 //var next_alert = new Date();
 //next_alert.setMinutes(now.getMinutes() + 30);
