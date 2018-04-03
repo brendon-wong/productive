@@ -15,11 +15,12 @@
 //setTimeout(function(){Push.create("Please check in with Productive.gq")}, 5000);
 
 // Prompt user for notification permissions if permissions not granted
+var can_push;
 Push.Permission.request(onGranted, onDenied);
 
 function onGranted() {
   var can_push = true;
-  setTimeout(function(){Push.create("Please check in with Productive.gq")}, 5000);
+  setTimeout(function(){Push.create("Please check in with Productive.gq")}, 2000);
 }
 
 function onDenied() {
