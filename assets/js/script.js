@@ -19,7 +19,7 @@ function manager() {
 
 function trigger_alert() {
   if (visual) {
-    Push.create("Please update Productive.gq");
+    Push.create("Please update Productive.gq", {link: "https://productive.gq"});
   }
   if (audio) {
     var a=new Audio('https://soundbible.com/grab.php?id=2156&type=mp3');
@@ -42,6 +42,7 @@ function set_next_alert(minutes) {
 }
 
 function calculate_alert_interval(current_productivity) {
+  // Process current_productivity into number of minutes here
   let interval = 0.1;
   return interval;
 }
