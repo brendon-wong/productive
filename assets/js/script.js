@@ -7,7 +7,7 @@ var disruptive = true;
 // var alert_interval = 2;
 var alert_interval;
 // Start with low productivity to activate alert interval faster if no response
-var current_productivity = 0.15;
+var current_productivity = 0.2;
 
 //var next_alert = new Date();
 //next_alert.setMinutes(now.getMinutes() + 30);
@@ -27,8 +27,13 @@ function trigger_alert() {
   }
   if (disruptive) {
     // Delay to allow audio to sound first
-    setTimeout(function(){window.alert("Please update Productive.gq")}, 500);
+    //setTimeout(function(){window.alert("Please update Productive.gq")}, 500);
+    disruptive_alert();
   }
+}
+
+function disruptive_alert() {
+  setTimeout(function(){window.alert("Please update Productive.gq")}, 500);
 }
 
 function set_next_alert(minutes) {
