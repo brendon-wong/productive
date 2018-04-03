@@ -18,12 +18,12 @@ function manager() {
 }
 
 function trigger_alert() {
-  if (visual) {
-    Push.create("Please update Productive.gq");
-  }
   if (audio) {
     var a=new Audio('https://soundbible.com/grab.php?id=2156&type=mp3');
     a.play();
+  }
+  if (visual) {
+    Push.create("Please update Productive.gq");
   }
   if (disruptive) {
     disruptive_alert();
