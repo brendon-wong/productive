@@ -1,4 +1,4 @@
-// Display remain on page prompt
-window.onbeforeunload = function() {
+// Display remain on page prompt; enable in production
+/* window.onbeforeunload = function() {
     return true;
-};
+}; */
