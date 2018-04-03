@@ -1,3 +1,16 @@
 body {
-  background-color: #DDDDDD;
+  /* Modern light grey */
+  background-color: #f9f9f9;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+.heading {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 32px;
 }
