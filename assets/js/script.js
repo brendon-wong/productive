@@ -66,10 +66,11 @@ function time_until_alert(alert_interval) {
   next_alert.setSeconds(next_alert.getSeconds() + (alert_interval * 60));
   var interval = setInterval(function() {
       var now = new Date().getTime();
-      var time_difference = (next_alert - now);
+      var time_difference = next_alert - now;
       var minutes = Math.floor((time_difference/1000/60) % 60);
       var seconds = Math.floor((time_difference/1000) % 60 );
-      if (seconds < 10) {seconds = "0" + seconds};
+      if (seconds < 10 && seconds >= 0) {seconds = "0" + seconds};
+      if (time_difference < 0) {minutes = 0; seconds = 00};
       $("#time_until_alert").text(minutes + ":" + seconds);
       if (time_difference <=100) {clearInterval(interval);};
   }, 100)
@@ -99,7 +100,7 @@ function trigger_alert() {
 // disruptive_alert is in a separate function so visual and audio alerts continue
 // to prompt the user even if the disruptive alert is not dismissed by the user
 function disruptive_alert() {
-  setTimeout(function(){window.alert("Please update Productive.gq")}, 1500);
+  setTimeout(function(){window.alert("Please update Productive.gq")}, 1000);
 }
 
 
