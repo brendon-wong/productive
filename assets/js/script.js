@@ -37,7 +37,7 @@ function manager() {
 function calculate_alert_interval(current_productivity) {
   let interval;
   if (current_productivity == 1 || current_productivity == 2) {
-    interval = 1.5;
+    interval = 1;
   }
   else if (current_productivity == 3) {
     interval = 5;
@@ -105,6 +105,8 @@ function trigger_alert() {
   if (disruptive) {
     disruptive_alert();
   }
+  // Set current_productivity to 1 so that users are notified until they check-in
+  current_productivity = 1;
 }
 
 // disruptive_alert is in a separate function so visual and audio alerts continue

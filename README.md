@@ -20,6 +20,9 @@ Productive.gq is a web application with the purpose of helping users overcome pr
 - Clicking audio button transitions between tone and spoken english notifications?
 - Include button to reset notifications (have the reset trigger notifications for demo purposes?)
 - Allow users to adjust minutes until next alert?
+- Consider having a task that is displayed so the user remembers what they are doing
+- Force users to update with repeated chimes, perhaps set default to one whenever a reminder is triggered, thus forcing users to check back in
+- Add selected/disabled buttons
 
 ## Style guide
 

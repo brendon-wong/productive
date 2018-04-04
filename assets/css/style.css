@@ -3,10 +3,10 @@ html {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   font-size: 16px;
-  /* Modern light grey background */
-  background-color: #f9f9f9;
   /* Dark grey and the answer to the ultimate question */
   color: #424242;
+  /* Modern light grey background */
+  background-color: #f9f9f9;
 }
 
 .heading {
