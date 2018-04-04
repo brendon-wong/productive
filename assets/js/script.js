@@ -1,27 +1,35 @@
-// 
+// Best practice for ensuring the page is ready before starting DOM manipulations
 $(document).ready(function() {
 
-
-// Notification settings
+// Notification settings for visual/push, audio/tone, and disruptive/alert notifications
 var visual = true;
 var audio = true;
 var disruptive = true;
 
-// Alert settings 
-// var alert_interval = 2;
+// Alert scheduling data
 var alert_interval;
-// Start with low productivity to activate alert interval faster if no response
+// Consider the default of having a low default score to quickly trigger alerts on load (1 in production) 
 var current_productivity = 0.9;
 
-//var next_alert = new Date();
-//next_alert.setMinutes(now.getMinutes() + 30);
+// Initialize program by requesting notifications
+Push.Permission.request(onGranted, onDenied);
 
+function onGranted() {
+  manager();
+}
+
+function onDenied() {
+  manager();
+}
+
+// Manage entire app, including alert scheduling and associated timer
 function manager() {
   alert_interval = calculate_alert_interval(current_productivity);
   set_next_alert(alert_interval);
   time_until_alert(alert_interval);
 }
 
+// Computes and displays time until next alert
 function time_until_alert(alert_interval) {
   var next_alert = new Date();
   next_alert.setSeconds(next_alert.getSeconds() + (alert_interval * 60));
@@ -31,46 +39,16 @@ function time_until_alert(alert_interval) {
       var minutes = Math.floor((time_difference/1000/60) % 60);
       var seconds = Math.floor((time_difference/1000) % 60 );
       if (seconds < 10) {seconds = "0" + seconds};
-      //if (time_difference < 0) {minutes = 0; seconds = 00};
-      //$(#time_until_alert).text(minutes + ":" + seconds) // display time on homepage
-      $("#time_until_alert").text(minutes + ":" + seconds)
-      //var remaining_time = document.getElementById("time_until_alert");
-      //remaining_time.innerHTML = 
-      //document.getElementById('time_until_alert').innerHTML(time_difference);
-      if (time_difference <=100) {clearInterval(interval)};
+      $("#time_until_alert").text(minutes + ":" + seconds);
+      if (time_difference <=100) {clearInterval(interval);};
   }, 100)
-  //"+hour_12+":"+mins+":"+secs"
 }
 
-function trigger_alert() {
-  if (visual) {
-    Push.create("Please update Productive.gq");
-  }
-  if (audio) {
-    var a=new Audio('https://soundbible.com/grab.php?id=2156&type=mp3');
-    a.play();
-  }
-  if (disruptive) {
-    disruptive_alert();
-  }
-}
-
-// Moved to separate function to allow audio alerts and push notifications to
-// continue to sound even if the alert is not dismissed by the user
-function disruptive_alert() {
-  setTimeout(function(){window.alert("Please update Productive.gq")}, 1000);
-}
-
-function set_next_alert(minutes) {
-  setTimeout(trigger_alert, (minutes * 60 * 1000));
-  setTimeout(manager, (minutes * 60 * 1000));
-}
-
+// Use current productivity score to determine minutes until next alert
 function calculate_alert_interval(current_productivity) {
-  // Turn current_productivity into minutes
   let interval;
   if (current_productivity == 1 || current_productivity == 2) {
-    interval = 2;
+    interval = 1.5;
   }
   else if (current_productivity == 3) {
     interval = 5;
@@ -94,7 +72,36 @@ function calculate_alert_interval(current_productivity) {
   return interval;
 }
 
-manager();
+// Triggers visual, audio, or disruptive alerts depending on user settings
+function trigger_alert() {
+  if (visual) {
+    // Use Push.js to trigger a push notification
+    Push.create("Please update Productive.gq");
+  }
+  if (audio) {
+    var a=new Audio('https://soundbible.com/grab.php?id=2156&type=mp3');
+    a.play();
+  }
+  if (disruptive) {
+    disruptive_alert();
+  }
+}
+
+// disruptive_alert is in a separate function so visual and audio alerts continue
+// to prompt the user even if the disruptive alert is not dismissed by the user
+function disruptive_alert() {
+  setTimeout(function(){window.alert("Please update Productive.gq")}, 1000);
+}
+
+// Trigger alerts and restart the manager function at the end of the alert interval
+function set_next_alert(minutes) {
+  setTimeout(trigger_alert, (minutes * 60 * 1000));
+  setTimeout(manager, (minutes * 60 * 1000));
+}
+
+// End of JS
+// Close $(document).ready()
+});
 
 
 
@@ -104,6 +111,7 @@ manager();
 
 
 
+// START REFERENCE SECTION
 
 
 // Display remain on page prompt; enable in production
@@ -160,5 +168,11 @@ var a=new Audio('https://soundbible.com/grab.php?id=2156&type=mp3'); a.play();
 setTimeout(function(){Push.create("Please check in with Productive.gq")}, 5000);
 */
 
-// End with closing
-});
+/* timer debugging code
+//var remaining_time = document.getElementById("time_until_alert");
+//remaining_time.innerHTML = 
+//document.getElementById('time_until_alert').innerHTML(time_difference);
+
+//if (time_difference < 0) {minutes = 0; seconds = 00}; // in case time_difference decreases below 0
+//$(#time_until_alert).text(minutes + ":" + seconds) // display time on homepage
+*/
