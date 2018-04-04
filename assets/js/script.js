@@ -99,7 +99,7 @@ function trigger_alert() {
 // disruptive_alert is in a separate function so visual and audio alerts continue
 // to prompt the user even if the disruptive alert is not dismissed by the user
 function disruptive_alert() {
-  setTimeout(function(){window.alert("Please update Productive.gq")}, 1000);
+  setTimeout(function(){window.alert("Please update Productive.gq")}, 1500);
 }
 
 
