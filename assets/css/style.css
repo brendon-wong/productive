@@ -7,12 +7,18 @@ html {
   background-color: #f9f9f9;
 }
 
+.heading {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 32px;
+}
+
 #time_until_alert {
   display: flex;
   justify-content: center;
   margin-top: 60px;
   font-weight: 100;
-  font-size: 124px;
+  font-size: 160px;
 }
 
 #buttons {
@@ -20,10 +26,8 @@ html {
   justify-content: center;
 }
 
-.heading {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 100;
-  font-size: 32px;
+#notify {
+  font-size: 16px;
 }
 
 .modern-button {
@@ -35,7 +39,7 @@ html {
   
   /* Button font */
   font-weight: 600;
-  font-size: 16px;
+  font-size: 20px;
   letter-spacing: .4px;
   
    /* Dark grey */
@@ -62,7 +66,7 @@ html {
   along with the entire background, revealing the temporary background color/ripple color 
   set in active underneath it. The temporary background color transitions to the hover background 
   color, and the inside of the transparent circle transitions first, creating a ripple. */
-  background: #cecece radial-gradient(circle, transparent 1%, #cecece 1%) center/15000%;
+  background: #e9e9e9 radial-gradient(circle, transparent 1%, #e9e9e9 1%) center/15000%;
 }
 /* Active state: the initial state of the ripple */
 .ripple:active {

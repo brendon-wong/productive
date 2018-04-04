@@ -55,7 +55,7 @@ function calculate_alert_interval(current_productivity) {
     interval = 30;
   }
   else {
-    // Used for users testing notifications and internal testing
+    // Used for user-driven notification testing and internal testing
     interval = 0.2;
   }
   return interval;
