@@ -5,6 +5,8 @@ html {
   font-size: 16px;
   /* Modern light grey background */
   background-color: #f9f9f9;
+  /* Dark grey and the answer to the ultimate question */
+  color: #424242;
 }
 
 .heading {
@@ -27,7 +29,7 @@ html {
 }
 
 #notify {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .modern-button {
@@ -38,11 +40,9 @@ html {
   padding: 0 40px;
   
   /* Button font */
-  font-weight: 600;
-  font-size: 20px;
+  font-weight: 300;
+  font-size: 24px;
   letter-spacing: .4px;
-  
-   /* Dark grey */
   color: #424242;
   
   /* Remove blue selection outline */
@@ -66,7 +66,7 @@ html {
   along with the entire background, revealing the temporary background color/ripple color 
   set in active underneath it. The temporary background color transitions to the hover background 
   color, and the inside of the transparent circle transitions first, creating a ripple. */
-  background: #e9e9e9 radial-gradient(circle, transparent 1%, #e9e9e9 1%) center/15000%;
+  background: #e7e7e7 radial-gradient(circle, transparent 1%, #e7e7e7 1%) center/15000%;
 }
 /* Active state: the initial state of the ripple */
 .ripple:active {

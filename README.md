@@ -29,3 +29,4 @@ The application uses Roboto for all text elements because of its modern appearan
 
 - Modern grey: #f9f9f9
 - Moderate grey hover color: #cecece
+- Lighter hover color: #e6e6e6
