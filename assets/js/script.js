@@ -8,9 +8,9 @@ var disruptive = true;
 
 // Alert scheduling data
 var alert_interval;
-// Consider the default of having a low default score to quickly trigger alerts on load 
-// 1 in production, can do 0.9 or something for testing
-var current_productivity = 3;
+// Defaults to a low score to quickly trigger an alert when the website is loaded
+// 1 in production, use <1 for testing
+var current_productivity = 1;
 
 // Initialize program by requesting notifications
 Push.Permission.request(onGranted, onDenied);
@@ -55,17 +55,21 @@ function calculate_alert_interval(current_productivity) {
     interval = 30;
   }
   else {
-    // For testing, switch to more reasonable number later
-    interval = 0.25;
+    // Used for users testing notifications and internal testing
+    interval = 0.2;
   }
   return interval;
 }
+
+// Create global variable for recurring display_countdown task
+// so other functions can deactivate the recurring task
+var display_countdown;
 
 // Displays the time in minutes and seconds until the next alert
 function time_until_alert(alert_interval) {
   var next_alert = new Date();
   next_alert.setSeconds(next_alert.getSeconds() + (alert_interval * 60));
-  var interval = setInterval(function() {
+  display_countdown = setInterval(function() {
       var now = new Date().getTime();
       var time_difference = next_alert - now;
       var minutes = Math.floor((time_difference/1000/60) % 60);
@@ -73,14 +77,19 @@ function time_until_alert(alert_interval) {
       if (seconds < 10 && time_difference >= 0) {seconds = "0" + seconds};
       if (time_difference < 0) {minutes = 0; seconds = 00};
       $("#time_until_alert").text(minutes + ":" + seconds);
-      if (time_difference <=100) {clearInterval(interval);};
+      if (time_difference <=100) {clearInterval(display_countdown);};
   }, 100)
 }
 
+// Create global variables for scheduled calling of trigger_alert and manager
+// so other functions can deactivate the scheduled calls
+var schedule_alert;
+var schedule_manager;
+
 // Trigger alerts and restart the manager function at the end of the alert interval
 function set_next_alert(minutes) {
-  setTimeout(trigger_alert, (minutes * 60 * 1000));
-  setTimeout(manager, (minutes * 60 * 1000));
+  schedule_alert = setTimeout(trigger_alert, (minutes * 60 * 1000));
+  schedule_manager = setTimeout(manager, (minutes * 60 * 1000));
 }
 
 // Triggers visual, audio, or disruptive alerts depending on user settings
@@ -104,15 +113,25 @@ function disruptive_alert() {
   setTimeout(function(){window.alert("Please update Productive.gq")}, 1000);
 }
 
+$(".modern-button").click(function() {
+  current_productivity = $(this).text();
+  clearInterval(display_countdown);
+  clearTimeout(schedule_alert);
+  clearTimeout(schedule_manager);
+  manager();
+});
+
+$("#notify").click(function() {
+  current_productivity = 0.2;
+  clearInterval(display_countdown);
+  clearTimeout(schedule_alert);
+  clearTimeout(schedule_manager);
+  manager();
+});
 
 // End of JS
 // Close $(document).ready()
 });
-
-
-
-
-
 
 
 

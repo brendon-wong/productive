@@ -15,8 +15,61 @@ html {
   font-size: 124px;
 }
 
+#buttons {
+  display: flex;
+  justify-content: center;
+}
+
 .heading {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   font-size: 32px;
+}
+
+.modern-button {
+  cursor: pointer;
+  
+  /* Button size */
+  height: 80px;
+  padding: 0 40px;
+  
+  /* Button font */
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: .4px;
+  
+   /* Dark grey */
+  color: #424242;
+  
+  /* Remove blue selection outline */
+  outline: none;
+  /* Remove border */
+  border: none;
+  /* Make button see-through */
+  background-color: transparent;
+  /* Transition hover effects into view */
+  transition: all .3s ease-out;
+}
+
+/* Normal state */
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+/* Hover state */
+.ripple:hover {
+  /* After active, the tiny transparent circle at the center of the gradient expands
+  along with the entire background, revealing the temporary background color/ripple color 
+  set in active underneath it. The temporary background color transitions to the hover background 
+  color, and the inside of the transparent circle transitions first, creating a ripple. */
+  background: #cecece radial-gradient(circle, transparent 1%, #cecece 1%) center/15000%;
+}
+/* Active state: the initial state of the ripple */
+.ripple:active {
+  /* Immediately transition the background */
+  transition: background 0s;
+  /* Start with a background gradient size of 100%, with 99% of the gradient being the hover color */
+  background-size: 100%;
+  /* Start with the ripple color, in the form of a temp background color, underneath the gradient */
+  background-color: #f9f9f9;  
 }
