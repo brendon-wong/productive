@@ -22,26 +22,14 @@ function onDenied() {
   manager();
 }
 
-// Manage entire app, including alert scheduling and associated timer
+// Manage the entire app, restarted after the alert triggers
 function manager() {
+  // Compute minutes until next alert
   alert_interval = calculate_alert_interval(current_productivity);
-  set_next_alert(alert_interval);
+  // Display a countdown to the user
   time_until_alert(alert_interval);
-}
-
-// Computes and displays time until next alert
-function time_until_alert(alert_interval) {
-  var next_alert = new Date();
-  next_alert.setSeconds(next_alert.getSeconds() + (alert_interval * 60));
-  var interval = setInterval(function() {
-      var now = new Date().getTime();
-      var time_difference = (next_alert - now);
-      var minutes = Math.floor((time_difference/1000/60) % 60);
-      var seconds = Math.floor((time_difference/1000) % 60 );
-      if (seconds < 10) {seconds = "0" + seconds};
-      $("#time_until_alert").text(minutes + ":" + seconds);
-      if (time_difference <=100) {clearInterval(interval);};
-  }, 100)
+  // Set an internal countdown to trigger an alert
+  set_next_alert(alert_interval);
 }
 
 // Use current productivity score to determine minutes until next alert
@@ -72,6 +60,27 @@ function calculate_alert_interval(current_productivity) {
   return interval;
 }
 
+// Displays the time in minutes and seconds until the next alert
+function time_until_alert(alert_interval) {
+  var next_alert = new Date();
+  next_alert.setSeconds(next_alert.getSeconds() + (alert_interval * 60));
+  var interval = setInterval(function() {
+      var now = new Date().getTime();
+      var time_difference = (next_alert - now);
+      var minutes = Math.floor((time_difference/1000/60) % 60);
+      var seconds = Math.floor((time_difference/1000) % 60 );
+      if (seconds < 10) {seconds = "0" + seconds};
+      $("#time_until_alert").text(minutes + ":" + seconds);
+      if (time_difference <=100) {clearInterval(interval);};
+  }, 100)
+}
+
+// Trigger alerts and restart the manager function at the end of the alert interval
+function set_next_alert(minutes) {
+  setTimeout(trigger_alert, (minutes * 60 * 1000));
+  setTimeout(manager, (minutes * 60 * 1000));
+}
+
 // Triggers visual, audio, or disruptive alerts depending on user settings
 function trigger_alert() {
   if (visual) {
@@ -93,11 +102,6 @@ function disruptive_alert() {
   setTimeout(function(){window.alert("Please update Productive.gq")}, 1000);
 }
 
-// Trigger alerts and restart the manager function at the end of the alert interval
-function set_next_alert(minutes) {
-  setTimeout(trigger_alert, (minutes * 60 * 1000));
-  setTimeout(manager, (minutes * 60 * 1000));
-}
 
 // End of JS
 // Close $(document).ready()
