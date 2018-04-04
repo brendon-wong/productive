@@ -9,10 +9,11 @@ html {
   background-color: #f9f9f9;
 }
 
-.heading {
+.logo {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   font-size: 32px;
+  user-select: none;
 }
 
 #time_until_alert {

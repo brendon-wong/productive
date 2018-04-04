@@ -31,6 +31,9 @@ function manager() {
   time_until_alert(alert_interval);
   // Set an internal countdown to trigger an alert
   set_next_alert(alert_interval);
+  // Set current_productivity to 1 so that users are notified until they check-in
+  // This may have caused a dual alert bug
+  current_productivity = 1;
 }
 
 // Use current productivity score to determine minutes until next alert
@@ -105,8 +108,6 @@ function trigger_alert() {
   if (disruptive) {
     disruptive_alert();
   }
-  // Set current_productivity to 1 so that users are notified until they check-in
-  current_productivity = 1;
 }
 
 // disruptive_alert is in a separate function so visual and audio alerts continue
