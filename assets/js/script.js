@@ -69,7 +69,7 @@ function time_until_alert(alert_interval) {
       var time_difference = next_alert - now;
       var minutes = Math.floor((time_difference/1000/60) % 60);
       var seconds = Math.floor((time_difference/1000) % 60 );
-      if (seconds < 10 && seconds >= 0) {seconds = "0" + seconds};
+      if (seconds < 10 && time_difference >= 0) {seconds = "0" + seconds};
       if (time_difference < 0) {minutes = 0; seconds = 00};
       $("#time_until_alert").text(minutes + ":" + seconds);
       if (time_difference <=100) {clearInterval(interval);};
