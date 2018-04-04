@@ -8,8 +8,9 @@ var disruptive = true;
 
 // Alert scheduling data
 var alert_interval;
-// Consider the default of having a low default score to quickly trigger alerts on load (1 in production) 
-var current_productivity = 0.9;
+// Consider the default of having a low default score to quickly trigger alerts on load 
+// 1 in production, can do 0.9 or something for testing
+var current_productivity = 3;
 
 // Initialize program by requesting notifications
 Push.Permission.request(onGranted, onDenied);
