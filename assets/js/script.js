@@ -1,10 +1,9 @@
 // Best practice for ensuring the page is ready before starting DOM manipulations
 $(document).ready(function() {
 
-// Notification settings for visual/push, audio/tone, and disruptive/alert notifications
+// Notification settings for visual and audio notifications
 var visual = true;
 var audio = true;
-var disruptive = true;
 
 // Alert scheduling data
 var alert_interval;
@@ -105,15 +104,6 @@ function trigger_alert() {
     var a=new Audio('https://soundbible.com/grab.php?id=2156&type=mp3');
     a.play();
   }
-  if (disruptive) {
-    disruptive_alert();
-  }
-}
-
-// disruptive_alert is in a separate function so visual and audio alerts continue
-// to prompt the user even if the disruptive alert is not dismissed by the user
-function disruptive_alert() {
-  setTimeout(function(){window.alert("Please update Productive.gq")}, 1000);
 }
 
 // If a current_productivity button is clicked, stop countdown and scheduled
