@@ -23,6 +23,8 @@ Productive.gq is a web application with the purpose of helping users overcome pr
 - Consider having a task that is displayed so the user remembers what they are doing
 - Force users to update with repeated chimes, perhaps set default to one whenever a reminder is triggered, thus forcing users to check back in
 - Add selected/disabled buttons
+- Focus noise/music? 
+- Customize or automatically vary notification sounds?
 
 ## Style guide
 

@@ -116,6 +116,8 @@ function disruptive_alert() {
   setTimeout(function(){window.alert("Please update Productive.gq")}, 1000);
 }
 
+// If a current_productivity button is clicked, stop countdown and scheduled
+// alert/manager calls, and reset timer using the current_productivity button value
 $(".modern-button").click(function() {
   current_productivity = $(this).text();
   clearInterval(display_countdown);
@@ -124,6 +126,7 @@ $(".modern-button").click(function() {
   manager();
 });
 
+// Trigger an alert quickly
 $("#notify").click(function() {
   current_productivity = 0.2;
   clearInterval(display_countdown);
@@ -131,6 +134,11 @@ $("#notify").click(function() {
   clearTimeout(schedule_manager);
   manager();
 });
+
+// Display remain on page prompt; enable in production
+/* window.onbeforeunload = function() {
+    return true;
+}; */
 
 // End of JS
 // Close $(document).ready()
