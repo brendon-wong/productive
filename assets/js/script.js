@@ -94,7 +94,7 @@ function set_next_alert(minutes) {
   schedule_manager = setTimeout(manager, (minutes * 60 * 1000));
 }
 
-// Triggers visual, audio, or disruptive alerts depending on user settings
+// Triggers visual or audio alerts depending on user settings
 function trigger_alert() {
   if (visual) {
     // Use Push.js to trigger a push notification
@@ -118,7 +118,7 @@ $(".modern-button").click(function() {
 
 // Trigger an alert quickly
 $("#notify").click(function() {
-  current_productivity = 0.2;
+  current_productivity = 0.1;
   clearInterval(display_countdown);
   clearTimeout(schedule_alert);
   clearTimeout(schedule_manager);
