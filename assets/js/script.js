@@ -36,16 +36,16 @@ function manager() {
 }
 
 // Global variable test
-const s2_interval = 3;
+var s1_interval = 1;
 
 // Use current productivity score to determine minutes until next alert
 function calculate_alert_interval(current_productivity) {
   let interval;
   if (current_productivity == 1) {
-    interval = 1;
+    interval = s1_interval;
   }
   else if (current_productivity == 2) {
-    interval = s2_interval;
+    interval = 3;
   }
   else if (current_productivity == 3) {
     interval = 5;
