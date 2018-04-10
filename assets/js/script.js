@@ -10,6 +10,18 @@ var alert_interval;
 // Default to a low score to quickly trigger an alert when the website is loaded
 var current_productivity = 1;
 
+// Manage the entire app, restarted after the alert triggers
+function manager() {
+  // Compute minutes until next alert
+  alert_interval = calculate_alert_interval(current_productivity);
+  // Display a countdown to the user
+  time_until_alert(alert_interval);
+  // Set an internal countdown to trigger an alert
+  set_next_alert(alert_interval);
+  // Set current_productivity to 1 so that users are notified until they check-in
+  current_productivity = 1;
+}
+
 // Create global variables for alert intervals in minutes to display to the user
 var s1_interval = 1;
 var s2_interval = 2;
@@ -116,18 +128,6 @@ $("#notify").click(function() {
 /* window.onbeforeunload = function() {
     return true;
 }; */
-
-// Manage the entire app, restarted after the alert triggers
-function manager() {
-  // Compute minutes until next alert
-  alert_interval = calculate_alert_interval(current_productivity);
-  // Display a countdown to the user
-  time_until_alert(alert_interval);
-  // Set an internal countdown to trigger an alert
-  set_next_alert(alert_interval);
-  // Set current_productivity to 1 so that users are notified until they check-in
-  current_productivity = 1;
-}
 
 // Request notifications without optional callback arguments (onGranted, onDenied)
 // to run the app while push permissions are pending
