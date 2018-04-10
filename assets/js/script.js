@@ -12,7 +12,6 @@ var alert_interval;
 var current_productivity = 1;
 
 // Initialize program by requesting notifications
-// Consider launching manager separately to begin countdown
 Push.Permission.request(onGranted, onDenied);
 
 function onGranted() {
@@ -32,17 +31,15 @@ function manager() {
   // Set an internal countdown to trigger an alert
   set_next_alert(alert_interval);
   // Set current_productivity to 1 so that users are notified until they check-in
+  // This may have caused a dual alert bug
   current_productivity = 1;
 }
 
 // Use current productivity score to determine minutes until next alert
 function calculate_alert_interval(current_productivity) {
   let interval;
-  if (current_productivity == 1) {
+  if (current_productivity == 1 || current_productivity == 2) {
     interval = 1;
-  }
-  else if (current_productivity == 2) {
-    interval = 3;
   }
   else if (current_productivity == 3) {
     interval = 5;
@@ -60,7 +57,7 @@ function calculate_alert_interval(current_productivity) {
     interval = 30;
   }
   else {
-    // Use for user-driven notification testing and internal testing
+    // Used for user-driven notification testing and internal testing
     interval = 0.1;
   }
   return interval;

@@ -25,8 +25,6 @@ Productive.gq is a web application with the purpose of helping users overcome pr
 - Add selected/disabled buttons
 - Focus noise/music? 
 - Customize or automatically vary notification sounds?
-- Display timing intervals with each productivity level or allow for user customization?
-- Need to create static pages like how to use
 
 ## Style guide
 
