@@ -43,10 +43,10 @@ var s4_interval = 10;
 var s5_interval = 15;
 var s6_interval = 20;
 var s7_interval = 30;
+var interval;
 
 // Use current productivity score to determine minutes until next alert
 function calculate_alert_interval(current_productivity) {
-  let interval;
   if (current_productivity == 1) {
     interval = s1_interval;
   }
