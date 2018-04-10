@@ -35,38 +35,29 @@ function manager() {
   current_productivity = 1;
 }
 
-// Create global variables for alert intervals in minutes to display to the user
-var s1_interval = 1;
-var s2_interval = 3;
-var s3_interval = 5;
-var s4_interval = 10;
-var s5_interval = 15;
-var s6_interval = 20;
-var s7_interval = 30;
-var interval;
-
 // Use current productivity score to determine minutes until next alert
 function calculate_alert_interval(current_productivity) {
+  let interval;
   if (current_productivity == 1) {
-    interval = s1_interval;
+    interval = 1;
   }
   else if (current_productivity == 2) {
-    interval = s2_interval;
+    interval = 3;
   }
   else if (current_productivity == 3) {
-    interval = s3_interval;
+    interval = 5;
   }
   else if (current_productivity == 4) {
-    interval = s4_interval;
+    interval = 10;
   }
   else if (current_productivity == 5) {
-    interval = s5_interval;
+    interval = 15;
   }
   else if (current_productivity == 6) {
-    interval = s6_interval;
+    interval = 20;
   }
   else if (current_productivity == 7) {
-    interval = s7_interval;
+    interval = 30;
   }
   else {
     // Use for user-driven notification testing and internal testing
