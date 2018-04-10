@@ -125,16 +125,10 @@ function manager() {
   current_productivity = 1;
 }
 
-function onGranted() {
-  manager();
-}
-
-function onDenied() {
-  manager();
-}
-
 // Initialize program by requesting notifications
 Push.Permission.request(onGranted, onDenied);
+
+manager();
 
 // End of JS
 // Close $(document).ready()
