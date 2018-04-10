@@ -133,6 +133,9 @@ function onDenied() {
   manager();
 }
 
+// Initialize program by requesting notifications
+Push.Permission.request(onGranted, onDenied);
+
 // End of JS
 // Close $(document).ready()
 });
