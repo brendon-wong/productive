@@ -14,27 +14,6 @@ var current_productivity = 1;
 // Initialize program by requesting notifications
 Push.Permission.request(onGranted, onDenied);
 
-function onGranted() {
-  manager();
-}
-
-function onDenied() {
-  manager();
-}
-
-// Manage the entire app, restarted after the alert triggers
-function manager() {
-  // Compute minutes until next alert
-  alert_interval = calculate_alert_interval(current_productivity);
-  // Display a countdown to the user
-  time_until_alert(alert_interval);
-  // Set an internal countdown to trigger an alert
-  set_next_alert(alert_interval);
-  // Set current_productivity to 1 so that users are notified until they check-in
-  // This may have caused a dual alert bug
-  current_productivity = 1;
-}
-
 // Global variable test
 var s1_interval = 1;
 
@@ -135,6 +114,27 @@ $("#notify").click(function() {
 /* window.onbeforeunload = function() {
     return true;
 }; */
+
+// Manage the entire app, restarted after the alert triggers
+function manager() {
+  // Compute minutes until next alert
+  alert_interval = calculate_alert_interval(current_productivity);
+  // Display a countdown to the user
+  time_until_alert(alert_interval);
+  // Set an internal countdown to trigger an alert
+  set_next_alert(alert_interval);
+  // Set current_productivity to 1 so that users are notified until they check-in
+  // This may have caused a dual alert bug
+  current_productivity = 1;
+}
+
+function onGranted() {
+  manager();
+}
+
+function onDenied() {
+  manager();
+}
 
 // End of JS
 // Close $(document).ready()
