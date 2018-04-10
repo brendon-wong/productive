@@ -5,15 +5,14 @@ $(document).ready(function() {
 var visual = true;
 var audio = true;
 
-// Alert scheduling data
+// Time until next alert in minutes
 var alert_interval;
-// Defaults to a low score to quickly trigger an alert when the website is loaded
-// 1 in production, use <1 for testing
+// Default to a low score to quickly trigger an alert when the website is loaded
 var current_productivity = 1;
 
 // Create global variables for alert intervals in minutes to display to the user
 var s1_interval = 1;
-var s2_interval = 3;
+var s2_interval = 2;
 var s3_interval = 5;
 var s4_interval = 10;
 var s5_interval = 15;
@@ -130,8 +129,8 @@ function manager() {
   current_productivity = 1;
 }
 
-// Request notifications without optional callback arguments 
-// (onGranted, onDenied) to run the app while push permissions are pending
+// Request notifications without optional callback arguments (onGranted, onDenied)
+// to run the app while push permissions are pending
 Push.Permission.request();
 
 // Run program 
