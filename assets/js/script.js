@@ -1,8 +1,5 @@
 // Best practice for ensuring the page is ready before starting DOM manipulations
 $(document).ready(function() {
-  
-// Global variable test
-var s1_interval = 1;
 
 // Notification settings for visual and audio notifications
 var visual = true;
@@ -14,8 +11,8 @@ var alert_interval;
 // 1 in production, use <1 for testing
 var current_productivity = 1;
 
-// Initialize program by requesting notifications
-Push.Permission.request(onGranted, onDenied);
+// Global variable test
+var s1_interval = 1;
 
 // Use current productivity score to determine minutes until next alert
 function calculate_alert_interval(current_productivity) {
