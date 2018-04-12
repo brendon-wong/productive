@@ -27,6 +27,7 @@ Productive.gq is a web application with the purpose of helping users overcome pr
 - Customize or automatically vary notification sounds?
 - Display timing intervals with each productivity level or allow for user customization?
 - Need to create static pages like how to use
+- Read out an audio message at a given interval
 
 ## Style guide
 

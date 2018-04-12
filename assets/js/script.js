@@ -130,7 +130,7 @@ $("#notify").click(function() {
 }; */
 
 // Request notifications without optional callback arguments (onGranted, onDenied)
-// to run the app while push permissions are pending
+// so the app can run via the call to manager while push permissions are pending
 Push.Permission.request();
 
 // Run program 
