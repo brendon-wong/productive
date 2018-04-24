@@ -28,6 +28,8 @@ Productive.gq is a web application with the purpose of helping users overcome pr
 - Display timing intervals with each productivity level or allow for user customization?
 - Need to create static pages like how to use
 - Read out an audio message at a given interval
+- Add pause feature
+- Add dashboard view with background image (user can input URL/based on location), news, and weather. Also, play looping audio (white noise, uptempo focus music, etc).
 
 ## Style guide
 
