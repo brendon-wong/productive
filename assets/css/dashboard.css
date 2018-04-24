@@ -16,9 +16,22 @@ html {
   user-select: none;
 }
 
+#weather-info {
+  display: flex;
+}
 
+/*
+.article-list {
+    margin-left: -80px;
+}
+*/
 
-
+/*
+.article {
+  padding-top: 15px;
+  border-top: 1px solid #CCC;
+}
+*/
 
 /* Not in Use */
 
