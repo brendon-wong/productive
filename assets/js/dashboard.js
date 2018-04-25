@@ -1,10 +1,6 @@
 // Best practice for ensuring the page is ready before starting DOM manipulations
 $(document).ready(function() {
   
-  function linkDelay (URL) {
-    setTimeout(function() { window.location = URL }, 500);
-  }
-  
   // User information
   var userCity; // Current implementation does not require declaration outside function
   
@@ -93,14 +89,29 @@ $(document).ready(function() {
     });    
   }
   
-  function inspiration() {
+  // Standard inspirational quote
+  /* function inspiration() {
     $.getJSON("https://quotes.rest/qod.json?category=inspire", function(data) {
       quoteBody = data.contents.quotes[0].quote;
       quoteAuthor = data.contents.quotes[0].author;
       $("#quotes").append('<p>"' + quoteBody + '"&nbsp; – ' + quoteAuthor + '</p>');
-    });
-  }
+    }); */
     
+    // Design inspirational quote
+    function inspiration() {
+      $.ajax({
+        // JSONP API
+        url: "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=myCallback",
+        //the name of the callback function
+        jsonpCallback: "myCallback",
+        dataType: "jsonp",
+        success: function(data) {
+          quoteBody = data[0].content;
+          quoteAuthor = data[0].title;
+          $("#quotes").append(quoteBody + '&nbsp; – ' + quoteAuthor);
+        }
+      });
+    }    
   
   // Run program
   // Gets location from IP then runs weather service
@@ -113,3 +124,13 @@ $(document).ready(function() {
 
 // End of JS code: close the $(document).ready() function
 });
+
+/* REFERENCE
+
+// Could incorporate this function to delay an a tag redirect until 
+// the navbar button ripple animations are complete
+function linkDelay (URL) {
+  setTimeout(function() { window.location = URL }, 500);
+}
+
+*/
