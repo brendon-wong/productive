@@ -32,13 +32,10 @@ $(document).ready(function() {
     $(this).parent().remove();
   });
 
-  /*
-  function addGoal(e) {
-    if (e.which == 13 || e.keyCode == 13) {
-      newGoal = $("#new-goal").val();
-      $("#goals-container").append('<div class="goal">' + newGoal + '</div>');
-    }
-  } */
+  // Display remain on page prompt; enable in production
+  window.onbeforeunload = function() {
+      return true;
+  };
 
 // End of JS code: close the $(document).ready() function
 });

@@ -1,3 +1,5 @@
+/* Setup */
+
 html {
   /* Default text styling */
   font-family: 'Roboto', sans-serif;
@@ -47,7 +49,7 @@ html {
   justify-content: flex-end;
 }
 
-/* Custom main */
+/* Main Page */
 
 #app-container {
   display: flex;
@@ -59,7 +61,7 @@ html {
 
 .goal {
   cursor: pointer;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 300;
   user-select: none;
 }
@@ -74,11 +76,14 @@ html {
   align-items: center;
 }
 
-
 /* Input Bar */
 
+#goals-container {
+  margin-bottom: 60px;
+}
+
 #input-container {
-  margin-top: 24px;
+  margin-bottom: 200px;
 }
 
 .input-bar {
@@ -90,7 +95,7 @@ html {
   
 	width: 450px;
 	height: 50px;
-	font-size: 28px;
+	font-size: 32px;
 	font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
@@ -112,57 +117,6 @@ html {
 .input-bar:focus::-webkit-input-placeholder {
 	transition: opacity 0.5s ease-in-out;
 	opacity: 0;
-}
-
-
-
-
-
-
-
-/* Non-custom Main Page */
-
-.header {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 100;
-  font-size: 28px;
-  user-select: none;
-}
-
-.flex-oneline {
-  display: flex;
-  margin: -15px 0px -15px 0px;
-}
-
-#dashboard-container {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  /* grid-template-rows: 10% 50%; */
-  grid-template-areas: 
-    "a d"
-    "b d"
-    "c d";
-  padding: 15px 75px 15px 75px;
-}
-
-.container {
-  margin: 0px 15px 0px 15px;
-}
-
-#weather-container {
-  grid-area: a;
-}
-
-#finance-container {
-  grid-area: b;
-}
-
-#inspiration-container{
-  grid-area: c;
-}
-
-#news-container {
-  grid-area: d;
 }
 
 /* Buttons */
@@ -212,18 +166,3 @@ html {
   /* Start with the ripple color, in the form of a temp background color, underneath the gradient */
   background-color: #f9f9f9;  
 }
-
-/* Not in Use */
-
-/*
-.article-list {
-    margin-left: -80px;
-}
-*/
-
-/*
-.article {
-  padding-top: 15px;
-  border-top: 1px solid #CCC;
-}
-*/

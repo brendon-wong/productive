@@ -1,8 +1,6 @@
 // Best practice for ensuring the page is ready before starting DOM manipulations
 $(document).ready(function() {
   
-  // Notes
-  // Should generalize with exact user location (lat, lon)for max usability
   function linkDelay (URL) {
     setTimeout(function() { window.location = URL }, 500);
   }
@@ -122,31 +120,3 @@ $(document).ready(function() {
 
 // End of JS code: close the $(document).ready() function
 });
-
-
-/*
-
-// Use to log JSON in console/doc
-console.log(JSON.stringify(data, null, 2));
-document.write(JSON.stringify(data));;
-console.log(currentTemp, currentDescription);
-document.write(JSON.stringify(data));
-
-// alternate openweathermap API key from internet: 886705b4c1182eb1c69f28eb8c520e20
-
-// Unusable because of complex data format
-function todayWeather (userCity) {
-  // API call with units in Fahrenheit = imperial
-  var todayWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + 
-  userCity + "&units=imperial" + "&APPID=9f4d6a2d14dfdbbcecbb0dcddffa8db4";
-  $.getJSON(todayWeatherURL, function (data) {
-    todayTemp = data.list[0].main.temp;
-    todayHigh = data.list[0].main.temp_max;
-    todayLow = data.list[0].main.temp_min;
-    //todayDescription = data.list[0].main.weather[0].description.toTitleCase();
-    console.log(todayTemp, todayHigh, todayLow);
-    console.log(data);
-  });
-}
-
-*/
