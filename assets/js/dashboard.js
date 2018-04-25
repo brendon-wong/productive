@@ -32,7 +32,7 @@ $(document).ready(function() {
       var currentTempF = data.main.temp;
       var currentTempC = Math.round(((currentTempF - 32) * (5/9))*100) / 100
       var currentDescription = data.weather[0].description.toTitleCase();
-      var weatherIconURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+      var weatherIconURL = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
       var sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
       var sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString();
       console.log(currentTempF, currentTempC, currentDescription, weatherIconURL, sunrise, sunset);
