@@ -35,7 +35,6 @@ $(document).ready(function() {
       var weatherIconURL = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
       var sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
       var sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString();
-      console.log(currentTempF, currentTempC, currentDescription, weatherIconURL, sunrise, sunset);
       $("#weather-header").text("Local Weather in " + userCity)
       $("#weather-info").append('<p>'+ currentTempF + '° Fahrenheit | ' + currentTempC + '° Celsius</p>')
       $("#weather-info").append('<div class="flex-oneline"><p>Condition: '+ 
@@ -72,8 +71,6 @@ $(document).ready(function() {
     $.getJSON(btc_url, function(data) {
       var latestTime = data['Meta Data']['7. Last Refreshed'];
       var latestPrice = Math.round(data['Time Series (Digital Currency Intraday)'][latestTime]['1a. price (USD)'] * 100) /  100;
-      console.log(latestTime);
-      console.log(latestPrice);
       $("#finance-info").append("<p>Bitcoin (BTC): $" + latestPrice.toString() + "</p>");
     });    
   }
@@ -83,8 +80,6 @@ $(document).ready(function() {
     $.getJSON(eth_url, function(data) {
       var latestTime = data['Meta Data']['7. Last Refreshed'];
       var latestPrice = Math.round(data['Time Series (Digital Currency Intraday)'][latestTime]['1a. price (USD)'] * 100) /  100;
-      console.log(latestTime);
-      console.log(latestPrice);
       $("#finance-info").append("<p>Ethereum (ETH): $" + latestPrice.toString() + "</p>");
     });    
   }
@@ -94,8 +89,6 @@ $(document).ready(function() {
     $.getJSON(eth_url, function(data) {
       var latestTime = data['Meta Data']['7. Last Refreshed'];
       var latestPrice = Math.round(data['Time Series (Digital Currency Intraday)'][latestTime]['1a. price (USD)'] * 100) /  100;
-      console.log(latestTime);
-      console.log(latestPrice);
       $("#finance-info").append("<p>Ripple (XRP): $" + latestPrice.toString() + "</p>");
     });    
   }
