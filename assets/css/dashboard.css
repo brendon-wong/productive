@@ -54,7 +54,11 @@ html {
     "a d"
     "b d"
     "c d";
-  padding: 100px;
+  padding: 15px 75px 15px 75px;
+}
+
+.container {
+  margin: 0px 15px 0px 15px;
 }
 
 #weather-container {
