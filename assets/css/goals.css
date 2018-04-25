@@ -19,6 +19,11 @@ html {
   margin-right: 1em;
 }
 
+.fa-times {
+  color: #C0C0C0;
+  margin-left: 1em;
+}
+
 /* Navbar */
 
 .navbar {
@@ -61,6 +66,12 @@ html {
 
 .complete {
   text-decoration: line-through;
+}
+
+#goals-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 
