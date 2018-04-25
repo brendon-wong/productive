@@ -9,12 +9,30 @@ html {
   background-color: #f9f9f9;
 }
 
+/* Navbar */
+
+.navbar {
+  display: grid;
+  grid-template-areas:
+    "a b";
+}
+
 .logo {
+  grid-area: a;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   font-size: 32px;
   user-select: none;
 }
+
+.links {
+  grid-area: b;
+  user-select: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Main Page */
 
 #time_until_alert {
   display: flex;
@@ -32,6 +50,8 @@ html {
 #notify {
   font-size: 18px;
 }
+
+/* Buttons */
 
 .modern-button {
   cursor: pointer;

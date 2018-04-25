@@ -3,11 +3,12 @@ $(document).ready(function() {
   
   // Notes
   // Should generalize with exact user location (lat, lon)for max usability
+  function linkDelay (URL) {
+    setTimeout(function() { window.location = URL }, 500);
+  }
   
   // User information
-  var userCity;
-  var currentTemp;
-  var currentDescription;
+  var userCity; // Current implementation does not require declaration outside function
   
   // Utility functions
   // Source: https://stackoverflow.com/questions/196972/convert-string-to-title-case-with-javascript
@@ -30,16 +31,24 @@ $(document).ready(function() {
     var currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + 
     userCity + "&units=imperial" + "&APPID=9f4d6a2d14dfdbbcecbb0dcddffa8db4";
     $.getJSON(currentWeatherURL, function (data) {
-      currentTemp = data.main.temp;
-      currentDescription = data.weather[0].description.toTitleCase();
-      weatherIconURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
-      console.log(currentTemp, currentDescription, weatherIconURL)
-      $("#weather-info").append('<p>'+ currentTemp + '° Fahrenheit, Condition: ' + 
-      currentDescription + '</p><img class="line-icon" src="' + weatherIconURL + '">');
+      var currentTempF = data.main.temp;
+      var currentTempC = Math.round(((currentTempF - 32) * (5/9))*100) / 100
+      var currentDescription = data.weather[0].description.toTitleCase();
+      var weatherIconURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+      var sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
+      var sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString();
+      console.log(currentTempF, currentTempC, currentDescription, weatherIconURL, sunrise, sunset);
+      $("#weather-header").text("Local Weather in " + userCity)
+      $("#weather-info").append('<p>'+ currentTempF + '° Fahrenheit | ' + currentTempC + '° Celsius</p>')
+      $("#weather-info").append('<div class="flex-oneline"><p>Condition: '+ 
+      currentDescription + '</p>' + '<img class="line-icon" src="' + weatherIconURL + '"></div>');
+      $("#weather-info").append('<p> Sunrise: '+ sunrise + '</p>')
+      $("#weather-info").append('<p> Sunset: '+ sunset + '</p>')
     });
   }
   
   // New York Times
+  // NYT API key: efbb8eea500b42d9ba1ef7e42eb548bc
   function latestNYT() {
     var nyt_url = "https://api.nytimes.com/svc/topstories/v2/home.json";
     nyt_url += '?' + $.param({
@@ -67,7 +76,7 @@ $(document).ready(function() {
       var latestPrice = Math.round(data['Time Series (Digital Currency Intraday)'][latestTime]['1a. price (USD)'] * 100) /  100;
       console.log(latestTime);
       console.log(latestPrice);
-      $("#finance-info").append("<p>Bitcoin: $" + latestPrice.toString() + "</p>");
+      $("#finance-info").append("<p>Bitcoin (BTC): $" + latestPrice.toString() + "</p>");
     });    
   }
   
@@ -78,7 +87,7 @@ $(document).ready(function() {
       var latestPrice = Math.round(data['Time Series (Digital Currency Intraday)'][latestTime]['1a. price (USD)'] * 100) /  100;
       console.log(latestTime);
       console.log(latestPrice);
-      $("#finance-info").append("<p>Ethereum: $" + latestPrice.toString() + "</p>");
+      $("#finance-info").append("<p>Ethereum (ETH): $" + latestPrice.toString() + "</p>");
     });    
   }
   
@@ -89,13 +98,12 @@ $(document).ready(function() {
       var latestPrice = Math.round(data['Time Series (Digital Currency Intraday)'][latestTime]['1a. price (USD)'] * 100) /  100;
       console.log(latestTime);
       console.log(latestPrice);
-      $("#finance-info").append("<p>Ripple: $" + latestPrice.toString() + "</p>");
+      $("#finance-info").append("<p>Ripple (XRP): $" + latestPrice.toString() + "</p>");
     });    
   }
   
   function inspiration() {
     $.getJSON("https://quotes.rest/qod.json?category=inspire", function(data) {
-      console.log(data);
       quoteBody = data.contents.quotes[0].quote;
       quoteAuthor = data.contents.quotes[0].author;
       $("#quotes").append('<p>"' + quoteBody + '"&nbsp; – ' + quoteAuthor + '</p>');
@@ -104,6 +112,7 @@ $(document).ready(function() {
     
   
   // Run program
+  // Gets location from IP then runs weather service
   userLocation();
   latestNYT();
   liveBTC();

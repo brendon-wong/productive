@@ -2,63 +2,78 @@ html {
   /* Default text styling */
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  font-size: 16px;
+  font-size: 20px;
   /* Dark grey and the answer to the ultimate question */
   color: #424242;
   /* Modern light grey background */
   background-color: #f9f9f9;
 }
 
-.header {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 100;
-  font-size: 24px;
-  user-select: none;
-}
+/* Navbar */
 
-#weather-info {
-  display: flex;
+.navbar {
+  display: grid;
+  grid-template-areas:
+    "a b";
 }
-
-/*
-.article-list {
-    margin-left: -80px;
-}
-*/
-
-/*
-.article {
-  padding-top: 15px;
-  border-top: 1px solid #CCC;
-}
-*/
-
-/* Not in Use */
 
 .logo {
+  grid-area: a;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   font-size: 32px;
   user-select: none;
 }
 
-
-#time_until_alert {
+.links {
+  grid-area: b;
+  user-select: none;
   display: flex;
-  justify-content: center;
-  margin-top: 60px;
+  justify-content: flex-end;
+}
+
+/* Main Page */
+
+.header {
+  font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  font-size: 160px;
+  font-size: 28px;
+  user-select: none;
 }
 
-#buttons {
+.flex-oneline {
   display: flex;
-  justify-content: center;
+  margin: -15px 0px -15px 0px;
 }
 
-#notify {
-  font-size: 18px;
+#dashboard-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* grid-template-rows: 10% 50%; */
+  grid-template-areas: 
+    "a d"
+    "b d"
+    "c d";
+  padding: 100px;
 }
+
+#weather-container {
+  grid-area: a;
+}
+
+#finance-container {
+  grid-area: b;
+}
+
+#inspiration-container{
+  grid-area: c;
+}
+
+#news-container {
+  grid-area: d;
+}
+
+/* Buttons */
 
 .modern-button {
   cursor: pointer;
@@ -105,3 +120,18 @@ html {
   /* Start with the ripple color, in the form of a temp background color, underneath the gradient */
   background-color: #f9f9f9;  
 }
+
+/* Not in Use */
+
+/*
+.article-list {
+    margin-left: -80px;
+}
+*/
+
+/*
+.article {
+  padding-top: 15px;
+  border-top: 1px solid #CCC;
+}
+*/
