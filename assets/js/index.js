@@ -57,7 +57,7 @@ $(document).ready(function() {
     }
     else {
       // Use for user-driven notification testing and internal testing
-      interval = 0.1;
+      interval = 0.05;
     }
     return interval;
   }
